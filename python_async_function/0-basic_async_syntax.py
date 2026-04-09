@@ -4,11 +4,11 @@
 Asyncio wait random delay with a max delay
 """
 
-from random import uniform
-from asyncio import sleep
+import asyncio
+import random
 
 
-async def wait_random(max_delay: float|int = 10) -> float:
+async def wait_random(max_delay: int = 10) -> float:
     """Wait random delay with a max delay
 
     Args:
@@ -17,7 +17,7 @@ async def wait_random(max_delay: float|int = 10) -> float:
     Returns:
         float: Delay
     """
-    delay: float = uniform(0, max_delay)
-    await sleep(delay)
+    delay: float = random.uniform(0, max_delay)
+    await asyncio.sleep(delay)
 
     return delay
