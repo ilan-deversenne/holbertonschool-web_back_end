@@ -8,7 +8,7 @@ from random import uniform
 from asyncio import sleep
 
 
-async def wait_random(max_delay: int = 10) -> float:
+async def wait_random(max_delay: float|int = 10) -> float:
     """Wait random delay with a max delay
 
     Args:
