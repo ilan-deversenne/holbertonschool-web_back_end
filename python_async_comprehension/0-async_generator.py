@@ -4,13 +4,13 @@
 Generate async that return 10 random numbers between 0 and 10
 """
 
-from collections.abc import AsyncGenerator
 import asyncio
 import random
+import typing
 
 
-# AsyncGenerator(AsyncIterator[YieldType], Generic[YieldType, SendType])
-async def async_generator() -> AsyncGenerator[float, None, None]:
+# Generator[YieldType, SendType, ReturnType]
+async def async_generator() -> typing.Generator[float, None, None]:
     """Generate random numbers between 0 and 10 asynchronously
 
     Yields:
