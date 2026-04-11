@@ -10,7 +10,7 @@ from time import time
 wait_n = __import__('1-concurrent_coroutines').wait_n
 
 
-def measure_time(n: int, max_delay: int):
+def measure_time(n: int, max_delay: int) -> float:
     """Measure time
 
     Args:
@@ -18,10 +18,10 @@ def measure_time(n: int, max_delay: int):
         max_delay (int): Max delay for wait_n
 
     Returns:
-        int: Time
+        float: Time
     """
-    start_at: int = time()
+    start_at: float = time()
     run(wait_n(n, max_delay))
-    end_at: int = time()
+    end_at: float = time()
 
     return (end_at - start_at) / n
