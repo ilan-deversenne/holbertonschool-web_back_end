@@ -24,4 +24,4 @@ def measure_time(n: int, max_delay: int):
     run(wait_n(n, max_delay))
     end_at: int = time()
 
-    return end_at - start_at
+    return (end_at - start_at) / n
