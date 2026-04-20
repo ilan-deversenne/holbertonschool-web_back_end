@@ -53,5 +53,7 @@ class Server:
             List[List]: List of related page contents
         """
 
-        index_range = self.index_range(page, page_size)
-        return self.dataset()[index_range[0]:index_range[1]]
+        data = self.dataset()
+        start, end = self.index_range(page, page_size)
+
+        return data[start:end] if start < len(data) else []
