@@ -54,7 +54,6 @@ class Server:
         data, dataset = [], self.indexed_dataset()
 
         assert index < len(dataset)
-        assert index + next_index < len(dataset)
 
         while len(data) < page_size:
             if current_index in dataset:
