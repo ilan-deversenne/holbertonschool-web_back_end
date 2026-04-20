@@ -4,6 +4,7 @@
 Pagination index helper
 """
 
+
 def index_range(page: int, page_size: int) -> tuple:
     """Rage index for pagination
 
