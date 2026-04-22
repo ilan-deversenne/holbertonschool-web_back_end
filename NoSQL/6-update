@@ -1,0 +1,6 @@
+// Set address to "972 Mission street" for all values with the name "Holberton School"
+db.school.update(
+  { name: "Holberton School" },
+  { $set: { address: "972 Mission street" } },
+  { multi: true }
+);
