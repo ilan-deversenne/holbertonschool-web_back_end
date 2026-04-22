@@ -18,7 +18,7 @@ def main():
 
     for method in methods:
         length = client.logs.nginx.count_documents({'method': method})
-        print(f"\t{method} {length}")
+        print(f"\t{method}: {length}")
 
     filters = {'method': 'GET', 'path': '/status'}
     status_len = client.logs.nginx.count_documents(filters)
