@@ -1,3 +1,3 @@
-module.exports = function(message) {
-    process.stdout.write(message);
+export default function(message) {
+    console.log(message)
 };
