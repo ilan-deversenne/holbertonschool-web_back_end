@@ -23,6 +23,8 @@ const countStudents = async (filename) => fs.readFile(
   console.log(`Number of students: ${lines}`);
   console.log(`Number of students in CS: ${cs.length}. List: ${cs.join(', ')}`);
   console.log(`Number of students in SWE: ${swe.length}. List: ${swe.join(', ')}`);
+}).catch(() => {
+  throw new Error('Error: Cannot load the database');
 });
 
 module.exports = countStudents;
