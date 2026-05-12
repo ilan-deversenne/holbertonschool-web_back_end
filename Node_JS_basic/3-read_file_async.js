@@ -1,30 +1,31 @@
-const fs = require('node:fs/promises');
+const fs = require('node:fs');
 
-const countStudents = async (filename) => fs.readFile(
-  filename,
-  { encoding: 'utf8', flag: 'r' },
-).then((data) => {
-  let lines = 0;
-  const cs = []; const
-    swe = [];
+const countStudents = async (filename) => new Promise((resolve, reject) => {
+  fs.readFile(filename, { encoding: 'utf8', flag: 'r' }, (err, data) => {
+    if (err) reject(Error('Cannot load the database'));
 
-  data.split('\n').forEach((line) => {
-    if (line.length < 1) return;
-    if (line.split(',')[0].length < 1) return;
+    let lines = 0;
+    const cs = []; const
+      swe = [];
 
-    lines += 1;
+    data.split('\n').forEach((line) => {
+      if (line.length < 1) return;
+      if (line.split(',')[0].length < 1) return;
 
-    if (line.split(',')[3] === 'CS') cs.push(line.split(',')[0]);
-    if (line.split(',')[3] === 'SWE') swe.push(line.split(',')[0]);
+      lines += 1;
+
+      if (line.split(',')[3] === 'CS') cs.push(line.split(',')[0]);
+      if (line.split(',')[3] === 'SWE') swe.push(line.split(',')[0]);
+    });
+
+    if (lines > 0) lines -= 1;
+
+    console.log(`Number of students: ${lines}`);
+    console.log(`Number of students in CS: ${cs.length}. List: ${cs.join(', ')}`);
+    console.log(`Number of students in SWE: ${swe.length}. List: ${swe.join(', ')}`);
+
+    resolve();
   });
-
-  if (lines > 0) lines -= 1;
-
-  console.log(`Number of students: ${lines}`);
-  console.log(`Number of students in CS: ${cs.length}. List: ${cs.join(', ')}`);
-  console.log(`Number of students in SWE: ${swe.length}. List: ${swe.join(', ')}`);
-}).catch(() => {
-  throw new Error('Error: Cannot load the database');
 });
 
 module.exports = countStudents;
