@@ -10,6 +10,7 @@ const countStudents = (filename) => {
 
     data.split('\n').forEach((line) => {
       if (line.length < 1) return;
+      if (line.split(',')[0].length < 1) return;
 
       lines += 1;
       if (line.split(',')[3] === 'CS') cs.push(line.split(',')[0]);
