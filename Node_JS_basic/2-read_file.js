@@ -16,7 +16,7 @@ const countStudents = (filename) => {
       if (line.split(',')[3] === 'CS') cs.push(line.split(',')[0]);
       if (line.split(',')[3] === 'SWE') swe.push(line.split(',')[0]);
     });
-    lines -= 1;
+    if (lines > 0) lines -= 1;
 
     console.log(`Number of students: ${lines}`);
     console.log(`Number of students in CS: ${cs.length}. List: ${cs.join(', ')}`);
