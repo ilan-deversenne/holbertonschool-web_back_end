@@ -31,14 +31,17 @@ const countStudents = async (filename) => new Promise((resolve, reject) => {
 });
 
 const app = http.createServer(async (req, res) => {
-  res.writeHead(200, { 'content-type': 'text/plain' });
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
 
-  if (req.url == '/') res.end('Holberton School!');
+  if (req.url == '/') {
+    res.end('Holberton School!');
 
-  if (req.url == '/students') {
+  } else if (req.url == '/students') {
     countStudents(process.argv[2]).then((students) => {
       res.end(`This is the list of our students\n${students}`);
     });
+  } else {
+    res.end();
   }
 });
 
