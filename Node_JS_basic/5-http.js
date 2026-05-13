@@ -36,7 +36,7 @@ const app = http.createServer(async (req, res) => {
   if (req.url == '/') res.end('Holberton School!');
 
   if (req.url == '/students') {
-    countStudents('database.csv').then((students) => {
+    countStudents(process.argv[2]).then((students) => {
       res.end(`This is the list of our students\n${students}`);
     });
   }
