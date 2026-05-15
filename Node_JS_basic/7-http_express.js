@@ -5,7 +5,10 @@ const app = express();
 
 const countStudents = async (filename) => new Promise((resolve, reject) => {
   fs.readFile(filename, { encoding: 'utf8', flag: 'r' }, (err, data) => {
-    if (err) reject(Error('Cannot load the database'));
+    if (err) {
+      reject(Error('Cannot load the database'));
+      return;
+    }
 
     let lines = 0;
     const cs = []; const
@@ -37,7 +40,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/students', async (req, res) => {
-  countStudents(process.argv[2]).then((students) => res.send(students));
+  countStudents(process.argv[2])
+    .then((students) => res.send(students)).catch((r) => res.send(r.toString()));
 });
 
 app.listen(1245);
