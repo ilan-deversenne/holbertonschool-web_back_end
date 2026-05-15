@@ -42,7 +42,7 @@ app.get('/', (req, res) => {
 app.get('/students', async (req, res) => {
   countStudents(process.argv[2])
     .then((students) => res.send(`This is the list of our students\n${students}`))
-    .catch((r) => res.send(r.toString()));
+    .catch((r) => res.send(`This is the list of our students\n${r.toString()}`));
 });
 
 app.listen(1245);
